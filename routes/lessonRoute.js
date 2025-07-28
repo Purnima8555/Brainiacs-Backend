@@ -1,26 +1,26 @@
 const express = require("express");
 const router = express.Router();
 const {
+  getLessons,
+  getLessonByTopicLevel,
   createLesson,
-  getAllTopics,
-  getLessonByTopic,
   updateLesson,
   deleteLesson,
 } = require("../controller/lessonController");
 
-// Add a lesson
+// Get all lessons
+router.get("/", getLessons);
+
+// Get lesson by topic and level
+router.get("/:topic/:level", getLessonByTopicLevel);
+
+// Create lesson
 router.post("/", createLesson);
 
-// Get all lesson topics
-router.get("/topics", getAllTopics);
+// Update lesson
+router.patch("/:topic/:level", updateLesson);
 
-// Get lesson by topic
-router.get("/:topic", getLessonByTopic);
-
-// Update lesson by topic
-router.patch("/:topic", updateLesson);
-
-// Delete lesson by topic
-router.delete("/:topic", deleteLesson);
+// Delete lesson
+router.delete("/:topic/:level", deleteLesson);
 
 module.exports = router;
