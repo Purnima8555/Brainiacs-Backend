@@ -3,28 +3,31 @@ const mongoose = require("mongoose");
 const progressSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
     required: true,
-    unique: true, // one progress record per user
+    unique: true,
+    ref: "User",
   },
-
   progress: {
-    addition: {
-      completed: { type: Number, default: 0 },
-      correct: { type: Number, default: 0 },
-    },
-    subtraction: {
-      completed: { type: Number, default: 0 },
-      correct: { type: Number, default: 0 },
-    },
-    multiplication: {
-      completed: { type: Number, default: 0 },
-      correct: { type: Number, default: 0 },
-    },
-    division: {
-      completed: { type: Number, default: 0 },
-      correct: { type: Number, default: 0 },
-    },
+    addition: [{
+      level: { type: Number, required: true },
+      accuracy: { type: Number, required: true, min: 0, max: 100 },
+      score: { type: Number, required: true, min: 0 }, // Added score field
+    }],
+    subtraction: [{
+      level: { type: Number, required: true },
+      accuracy: { type: Number, required: true, min: 0, max: 100 },
+      score: { type: Number, required: true, min: 0 },
+    }],
+    multiplication: [{
+      level: { type: Number, required: true },
+      accuracy: { type: Number, required: true, min: 0, max: 100 },
+      score: { type: Number, required: true, min: 0 },
+    }],
+    division: [{
+      level: { type: Number, required: true },
+      accuracy: { type: Number, required: true, min: 0, max: 100 },
+      score: { type: Number, required: true, min: 0 },
+    }],
   },
 });
 

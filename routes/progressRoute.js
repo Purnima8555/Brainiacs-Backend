@@ -16,7 +16,7 @@ router.get("/:userId", getProgressByUserId);
 // Update progress for user
 router.patch("/:userId", updateProgress);
 
-// Delete progress record (optional)
+// Delete progress record
 router.delete("/:userId", deleteProgress);
 
 module.exports = router;
